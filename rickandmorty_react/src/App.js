@@ -15,7 +15,8 @@ class App extends Component {
     super();
     this.state = {
       messages: [],
-      currentPage:1
+      currentPage:1,
+      searchInput:""
     };
   }
   
@@ -31,7 +32,11 @@ class App extends Component {
       currentPage:newCurrentPage
     });
   }
-  
+  changeSearchInput=(newSearchInput)=>{
+    this.setState({
+      searchInput:newSearchInput
+    });
+  }
 
   render(){
   return (
@@ -42,7 +47,7 @@ class App extends Component {
         })}
       </div>
       <Switch>
-        <Route path="/home" render={(props)=><HomePage onChangePage={this.changePage} nbResults={this.state.nbResults} currentPage={this.state.currentPage} className="page" {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
+        <Route path="/home" render={(props)=><HomePage searchInput={this.state.searchInput} onChangeSearchInput={this.changeSearchInput} onChangePage={this.changePage} nbResults={this.state.nbResults} currentPage={this.state.currentPage} className="page" {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
         <Route path="/character/:id" render={(props)=><CharacterPage className="page" {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
         <Route exact path="/">
           <Redirect to="/home"/>
