@@ -104,14 +104,12 @@ class HomePage extends Component {
     }
 
     render() {
-
         return (
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col page-title">
-                        <p>Home</p>
-                    </div>
-                </div>
+            <>
+            <div className="page-title">
+            <p className="text-title">Home</p>
+        </div>
+            <div className="container-fluid mt-5">
                 {!this.state.loading && <div className="row mb-5">
                     {this.state.characters.map((c,index)=>
                     <div key={"character-"+index.toString()} className="col-12 col-sm-6 col-md-4 col-xl-3">
@@ -122,7 +120,7 @@ class HomePage extends Component {
                 {!this.state.loading && <div className="row list-navigation w-100">
                     <ListNavigation onChangeNbResults={this.changeNbResults} currentPage={this.state.currentPage} onClickLastPage={()=>{this.clickPage(Math.trunc(this.state.totalResults/this.state.nbResults)+1)}} onClickFirstPage={()=>{this.clickPage(1)}} totalPages={Math.trunc(this.state.totalResults/this.state.nbResults)+1} onClickNext={this.clickNext} onClickPrevious={this.clickPrevious}/>
                 </div>}
-            </div>)
+            </div></>)
     }
 }
 
