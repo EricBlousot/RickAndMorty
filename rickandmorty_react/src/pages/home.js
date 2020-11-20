@@ -85,7 +85,7 @@ class HomePage extends Component {
                 <div className="container-fluid page-content">
                     <div className="row">
                         <div className="col col-sm-4 col-xl-3 d-flex justify-content-left">
-                            <input value={this.props.searchInput} onChange={this.changeSearchInput} type="text" onKeyDown={this.keyDownSearch} className="form-control" placeholder="Filter by name" />
+                            <input value={this.props.searchInput} onChange={this.changeSearchInput} type="text" onKeyDown={this.keyDownSearch} className="form-control" placeholder="Entrez un nom" />
                         </div>
                     </div>
                     {!this.state.loading && <div className="row">
