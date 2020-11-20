@@ -94,15 +94,17 @@ class HomePage extends Component {
                                 <CharacterCard imgSrc={c.image} name={c.name} species={c.species} status={c.status} onClick={() => { this.props.history.push('/character/' + c.id) }} />
                             </div>
                         )}
+                        
+                        {this.state.characters.length == 0 && <div className="mt-5 col-12 d-flex justify-content-center species"><p>No results.</p></div>}
                     </div>}
-                    <div className="row">
+                    {this.state.characters.length != 0 && <div className="row">
                         <div className="col d-flex justify-content-end load-more-button">
                             <button disabled={(this.state.moreLoadedPage + this.props.currentPage == this.state.nbTotalPages)||this.state.characters.length===0} className="btn btn-outline-secondary" onClick={this.loadMore}>Load More</button>
                         </div>
-                    </div>
-                    <div className="row list-navigation w-100">
+                    </div>}
+                    {this.state.characters.length>0 && <div className="row list-navigation w-100">
                         <ListNavigation disabled={this.state.loading} currentPage={this.props.currentPage} onClickLastPage={() => { this.clickPage(this.state.nbTotalPages) }} onClickFirstPage={() => { this.clickPage(1) }} totalPages={this.state.nbTotalPages} onClickNext={this.clickNext} onClickPrevious={this.clickPrevious} />
-                    </div>
+                    </div>}
                 </div></>)
     }
 }
