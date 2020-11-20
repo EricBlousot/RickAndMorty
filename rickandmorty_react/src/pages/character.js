@@ -74,11 +74,12 @@ class CharacterPage extends Component {
 
   render() {
     if(!this.state.loading){
-      return (
-        <div className="container-fluid">
-          <div className="page-title">
+      return (<>
+      
+      <div className="page-title">
                   <p className="text-title">{this.state.character.name}</p>
           </div>
+        <div className="container-fluid page-content">
           <div className="row">
               <div className="col-12 col-sm-6 d-flex justify-content-center justify-content-sm-end mb-3">
                 <img className="character-image w-100" src={this.state.character.image}/>
@@ -101,7 +102,7 @@ class CharacterPage extends Component {
                 })}
               </div>
           </div>
-      </div>)
+      </div></>)
       }
       else{
         return <p>Loading</p>

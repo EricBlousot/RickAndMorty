@@ -9,8 +9,8 @@ class ListNavigation extends Component {
     render() {
         return (
             <div className="col d-flex flex-row justify-content-center">
-                <p className="page-number">{this.props.currentPage} sur {this.props.totalPages}</p>
-                <div class="btn-group dropup">
+                <p className=" d-none d-sm-block page-number">{this.props.currentPage} sur {this.props.totalPages}</p>
+                <div class="btn-group dropup d-none d-sm-block">
                     <button type="button" class="btn btn-outline-secondary dropdown-toggle m-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Résultats par page</button>
                     <div className="dropdown-menu">
                         <button onClick={() => this.props.onChangeNbResults(10)} className="dropdown-item">10</button>

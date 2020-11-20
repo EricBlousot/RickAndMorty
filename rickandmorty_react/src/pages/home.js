@@ -109,7 +109,7 @@ class HomePage extends Component {
             <div className="page-title">
             <p className="text-title">Home</p>
         </div>
-            <div className="container-fluid mt-5">
+            <div className="container-fluid page-content">
                 {!this.state.loading && <div className="row mb-5">
                     {this.state.characters.map((c,index)=>
                     <div key={"character-"+index.toString()} className="col-12 col-sm-6 col-md-4 col-xl-3">
