@@ -16,7 +16,7 @@ class App extends Component {
     this.state = {
       messages: [],
       currentPage:1,
-      nbResults:10
+      searchInput:""
     };
   }
   
@@ -32,11 +32,10 @@ class App extends Component {
       currentPage:newCurrentPage
     });
   }
-  changeNbResults=(newNbResults)=>{
+  changeSearchInput=(newSearchInput)=>{
     this.setState({
-      nbResults:newNbResults,
-      currentPage:1
-  });
+      searchInput:newSearchInput
+    });
   }
 
   render(){
@@ -48,7 +47,7 @@ class App extends Component {
         })}
       </div>
       <Switch>
-        <Route path="/home" render={(props)=><HomePage onChangeNbResults={this.changeNbResults} onChangePage={this.changePage} nbResults={this.state.nbResults} currentPage={this.state.currentPage} className="page" {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
+        <Route path="/home" render={(props)=><HomePage searchInput={this.state.searchInput} onChangeSearchInput={this.changeSearchInput} onChangePage={this.changePage} nbResults={this.state.nbResults} currentPage={this.state.currentPage} className="page" {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
         <Route path="/character/:id" render={(props)=><CharacterPage className="page" {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
         <Route exact path="/">
           <Redirect to="/home"/>
