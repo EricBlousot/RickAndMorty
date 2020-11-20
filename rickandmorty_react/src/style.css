@@ -8,3 +8,83 @@
 .user-message{
     margin:0!important;
 }
+.image-character-card{
+    width:100px;
+    height:100px;
+    border-radius:4px 0 0 4px;
+    z-index: 0;
+}
+.bloc-character-card{
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.5);
+    border-radius: 4px;
+    margin:15px 0 15px 0;
+    cursor:pointer;
+    background-color: white;
+    max-height:100px;
+    overflow: hidden;
+}
+.text-character-card{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+}
+.title-character-card{
+    padding: 5px 0 5px 10px;
+    font-weight: 400;
+    color:rgb(0, 44, 94);
+    font-size:22px;
+    white-space: nowrap;
+}
+.bloc-character-card:hover {
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
+}
+.page-title{
+    position: fixed;
+    top:0px;
+    z-index: 5;
+    background-color:rgba(255, 255, 255, 0.685);
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.5);
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    color:rgb(0, 44, 94);
+    height: 50px;
+    width: 100%;
+}
+.page-subtitle{
+    font-size: 30px;
+    color:rgb(0, 44, 94);
+}
+.list-navigation{
+    position:fixed;
+    bottom:0;
+    background-color:rgba(255, 255, 255, 0.685);
+    border-radius:4px 4px 0 0;
+    box-shadow: -5px -5px 10px 0px rgba(0,0,0,0.5);
+}
+.character-image{
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
+    border-radius: 4px;
+    max-width: 300px;
+}
+.icon{
+    font-size:30px;
+    color:rgb(21, 78, 124);
+    text-shadow: 3px 2px 5px rgba(0, 0, 0, 0.25);
+}
+.species{
+    color:rgb(0, 44, 94);
+    font-size:20px;
+    font-weight:100
+}
+.page-number{
+    padding-top:15px;
+    font-size:20px;
+    margin-right:10px;
+}
+.text-title{
+    margin-top: -7px;
+}
+.page-content{
+    margin-top:60px;
+}

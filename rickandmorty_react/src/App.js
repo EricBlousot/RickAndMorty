@@ -35,8 +35,8 @@ class App extends Component {
         })}
       </div>
       <Switch>
-        <Route path="/home" render={(props)=><HomePage {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
-        <Route path="/character/:id" render={(props)=><CharacterPage {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
+        <Route path="/home" render={(props)=><HomePage className="page" {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
+        <Route path="/character/:id" render={(props)=><CharacterPage className="page" {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
         <Route exact path="/">
           <Redirect to="/home"/>
         </Route>
