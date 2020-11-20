@@ -1,25 +1,49 @@
-import logo from './logo.svg';
 import './App.css';
+import Message from './components/message';
+import CharacterPage from './pages/character';
+import HomePage from './pages/home';
+import NotFoundPage from './pages/notfound';
+import {Redirect, Route, Router, Switch} from 'react-router-dom';
+import { createBrowserHistory as createHistory } from 'history';
+import React, { Component } from 'react';
+const history = createHistory();
 
-function App() {
+
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      messages: []
+    };
+  }
+  
+  addMessage = (newMessage, newType) => {
+    let tempMessages = this.state.messages;
+    tempMessages.push({ text: newMessage, type: newType });
+    this.setState({
+      messages: tempMessages
+    })
+  }
+
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router history={history}>
+      <div className="messages">
+        {this.state.messages.map((m, i) => {
+          return <Message messageText={m.text} messageType={m.type} />
+        })}
+      </div>
+      <Switch>
+        <Route path="/home" render={(props)=><HomePage {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
+        <Route path="/character/:id" render={(props)=><CharacterPage {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
+        <Route exact path="/">
+          <Redirect to="/home"/>
+        </Route>
+        <Route component={NotFoundPage} />
+      </Switch>
+    </Router>
+  );}
 }
 
 export default App;
