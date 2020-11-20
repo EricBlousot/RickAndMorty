@@ -12,12 +12,16 @@
     width:100px;
     height:100px;
     border-radius:4px 0 0 4px;
+    z-index: 0;
 }
 .bloc-character-card{
     box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.5);
     border-radius: 4px;
     margin:15px 0 15px 0;
     cursor:pointer;
+    background-color: white;
+    max-height:100px;
+    overflow: hidden;
 }
 .text-character-card{
     display:flex;
@@ -25,9 +29,10 @@
     justify-content: space-between;
 }
 .title-character-card{
-    padding: 5px 0 5px 0;
-    font-size: 18px;
-    font-weight: bold;
+    padding: 5px 0 5px 10px;
+    font-weight: 400;
+    color:rgb(0, 44, 94);
+    font-size:20px;
 }
 .bloc-character-card:hover {
     box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
@@ -43,4 +48,21 @@
     bottom:0;
     background-color:rgb(0, 132, 255);
     box-shadow: -5px -5px 10px 0px rgba(0,0,0,0.5);
+}
+.character-image{
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
+    border-radius: 4px;
+    max-width: 300px;
+}
+.page{
+    background-color:grey;
+}
+.icon{
+    font-size:30px;
+    color:lightseagreen;
+}
+.species{
+    color:rgb(0, 44, 94);
+    font-size:20px;
+    font-weight:100
 }

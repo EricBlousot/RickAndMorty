@@ -32,7 +32,6 @@ class HomePage extends Component {
                 return r.json();
         })
         .then(json=>{{
-            console.log(json);
             this.setState({
                 totalResults:json.info.count,
                 firstLoad:false
@@ -44,12 +43,9 @@ class HomePage extends Component {
     }
 
     generateIdList=(pageNumber, nbResults)=>{
-        console.log("pn, nbres : ",pageNumber, nbResults);
         let begin=(nbResults)*(pageNumber-1)+1;
-        console.log("begin : ",begin);
         let list="["+begin;
         for(let i=begin+1;i<(begin+nbResults);i++){
-            console.log(list);
             list+=(","+i);
         }
         list+="]";
@@ -69,7 +65,6 @@ class HomePage extends Component {
                 return r.json();
         })
         .then(json=>{{
-            console.log(json);
             this.setState({
                 characters:json,
                 loading:false
