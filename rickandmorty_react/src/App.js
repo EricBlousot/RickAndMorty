@@ -14,7 +14,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      messages: []
+      messages: [],
+      currentPage:1,
+      nbResults:10
     };
   }
   
@@ -24,6 +26,17 @@ class App extends Component {
     this.setState({
       messages: tempMessages
     })
+  }
+  changePage=(newCurrentPage)=>{
+    this.setState({
+      currentPage:newCurrentPage
+    });
+  }
+  changeNbResults=(newNbResults)=>{
+    this.setState({
+      nbResults:newNbResults,
+      currentPage:1
+  });
   }
 
   render(){
@@ -35,7 +48,7 @@ class App extends Component {
         })}
       </div>
       <Switch>
-        <Route path="/home" render={(props)=><HomePage className="page" {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
+        <Route path="/home" render={(props)=><HomePage onChangeNbResults={this.changeNbResults} onChangePage={this.changePage} nbResults={this.state.nbResults} currentPage={this.state.currentPage} className="page" {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
         <Route path="/character/:id" render={(props)=><CharacterPage className="page" {...props} onEmitMessage={(newMessage, newType) => this.addMessage(newMessage, newType)} />}/>
         <Route exact path="/">
           <Redirect to="/home"/>

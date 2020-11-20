@@ -7,8 +7,6 @@ class HomePage extends Component {
         super();
         this.state = {
             characters:[],
-            currentPage:1,
-            nbResults:10,
             loading:false,
             totalResults:0,
             firstLoad:true
@@ -16,13 +14,14 @@ class HomePage extends Component {
     }
 
     componentDidMount(){
-        this.loadCharacters(this.state.currentPage, this.state.nbResults);
+        this.loadCharacters(this.props.currentPage, this.props.nbResults);
         if(this.state.firstLoad){
             this.loadTotalResults();
         }
     }
 
     loadTotalResults=()=>{
+        console.log("load count");
         fetch(process.env.REACT_APP_API_URL+"character/",
         {
             method:'GET',
@@ -76,30 +75,23 @@ class HomePage extends Component {
     }
 
     clickNext=()=>{
-        let newCurrentPage=this.state.currentPage+1;
-        this.setState({
-            currentPage:newCurrentPage
-        });
-        this.loadCharacters(newCurrentPage, this.state.nbResults);
+        this.props.onChangePage(this.props.currentPage+1);
+        this.loadCharacters(this.props.currentPage+1, this.props.nbResults);
     }
     clickPrevious=()=>{
-        let newCurrentPage=this.state.currentPage-1;
-        this.setState({
-            currentPage:newCurrentPage
-        });
-        this.loadCharacters(newCurrentPage, this.state.nbResults);
+        this.props.onChangePage(this.props.currentPage-1);
+        this.loadCharacters(this.props.currentPage-1, this.props.nbResults);
     }
     clickPage=(pageNum)=>{
-        this.setState({
-            currentPage:pageNum
-        });
-        this.loadCharacters(pageNum, this.state.nbResults);
+        this.props.onChangePage(pageNum);
+        this.loadCharacters(pageNum, this.props.nbResults);
     }
     changeNbResults=(newNbResults)=>{
         this.setState({
             nbResults:newNbResults,
             currentPage:1
         });
+        this.props.onChangeNbResults(newNbResults);
         this.loadCharacters(1, newNbResults);
     }
 
@@ -117,9 +109,9 @@ class HomePage extends Component {
                     </div>
                     )}
                 </div>}
-                {!this.state.loading && <div className="row list-navigation w-100">
-                    <ListNavigation onChangeNbResults={this.changeNbResults} currentPage={this.state.currentPage} onClickLastPage={()=>{this.clickPage(Math.trunc(this.state.totalResults/this.state.nbResults)+1)}} onClickFirstPage={()=>{this.clickPage(1)}} totalPages={Math.trunc(this.state.totalResults/this.state.nbResults)+1} onClickNext={this.clickNext} onClickPrevious={this.clickPrevious}/>
-                </div>}
+                <div className="row list-navigation w-100">
+                    <ListNavigation onChangeNbResults={this.changeNbResults} disabled={this.state.loading} currentPage={this.props.currentPage} onClickLastPage={()=>{this.clickPage(Math.trunc(this.state.totalResults/this.props.nbResults)+1)}} onClickFirstPage={()=>{this.clickPage(1)}} totalPages={Math.trunc(this.state.totalResults/this.props.nbResults)+1} onClickNext={this.clickNext} onClickPrevious={this.clickPrevious}/>
+                </div>
             </div></>)
     }
 }
