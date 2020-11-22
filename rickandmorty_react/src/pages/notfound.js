@@ -9,7 +9,7 @@ class NotFoundPage extends Component {
   render() {
     return (
       <div>
-          NotFoundpage
+        Not Found...
       </div>)
   }
 }
